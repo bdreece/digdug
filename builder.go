@@ -33,7 +33,7 @@ func (b *Builder) Decorate(constructor any, opts ...dig.DecorateOption) *Builder
 
 func (b *Builder) quit(err error) {
 	_ = dig.Visualize(b.Container, os.Stderr, dig.VisualizeError(err))
-    panic(err)
+	panic(err)
 }
 
 // New creates a Builder with a new [dig.Container]
