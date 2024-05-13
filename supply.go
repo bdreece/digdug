@@ -4,9 +4,13 @@ package digdug
 //
 //	type Config struct { /* omitted for brevity */ }
 //
-//	func Foo(cfg *Config) {
+//	func main() {
+//      var cfg Config
+//      
+//      /* parse config from file */
+//
 //	    container := digdug.New().
-//	        Provide(digdug.Supply(cfg)).
+//	        Provide(digdug.Supply(&cfg)).
 //	        Provide(/* ... */).
 //	        Container
 //	}

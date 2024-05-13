@@ -1,10 +1,8 @@
 package digdug
 
-import "go.uber.org/dig"
-
-// Resolve resolves the parameterized type from the [dig.Container], returning an
+// Resolve resolves the parameterized type from the [Container], returning an
 // error if not found.
-func Resolve[T any](c *dig.Container) (T, error) {
+func Resolve[T any](c Container) (T, error) {
 	ch := make(chan T, 1)
 	defer close(ch)
 
@@ -17,7 +15,9 @@ func Resolve[T any](c *dig.Container) (T, error) {
 	return <-ch, nil
 }
 
-func MustResolve[T any](c *dig.Container) T {
+// MustResolve resolves the parameterized type from the [Container], panicking
+// if not found.
+func MustResolve[T any](c Container) T {
 	value, err := Resolve[T](c)
 	if err != nil {
 		panic(err)
